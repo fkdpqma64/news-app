@@ -3,6 +3,7 @@ package common.di
 import android.app.Application
 import android.content.Context
 import com.android.newsapp.LaunchActivityViewModel
+import com.android.newsapp.newslist.NewsListViewModel
 import com.android.newsapp.webview.WebViewActivityViewModel
 import common.App
 import common.di.module.RetrofitModule
@@ -26,6 +27,7 @@ interface AppComponent {
     val app: App
 
     val launchActivityViewModel: LaunchActivityViewModel
+    val newsListViewModel: NewsListViewModel
     val webViewActivityViewModel: WebViewActivityViewModel
 
 }

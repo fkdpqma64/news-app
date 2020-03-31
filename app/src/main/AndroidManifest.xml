@@ -18,7 +18,9 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:supportsRtl,android:allowBackup"
         tools:targetApi="m">
-        <activity android:name=".webview.WebViewActivity"></activity>
+        <activity
+            android:name=".webview.WebViewActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".splash.SplashActivity" />
         <activity android:name=".LaunchActivity">
             <intent-filter>
