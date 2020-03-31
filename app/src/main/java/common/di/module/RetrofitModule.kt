@@ -10,6 +10,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 import javax.inject.Singleton
 
+/**
+ * Dagger - Retrofit 모듈
+ */
 @Module
 object RetrofitModule {
 

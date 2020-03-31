@@ -7,6 +7,9 @@ import com.android.newsapp.R
 import com.android.newsapp.databinding.ActivityWebViewBinding
 import common.di.injector
 
+/**
+ * 웹 뷰 액티비티
+ */
 class WebViewActivity : AppCompatActivity() {
 
     companion object {
@@ -27,7 +30,9 @@ class WebViewActivity : AppCompatActivity() {
     }
 
     private fun customInit() {
-
+        /**
+         * 뉴스 제목과 키워드를 가져와서 액션바 타이틀과 서브타이틀에 보여줌
+         */
         supportActionBar?.apply {
             title = intent.getStringExtra(EXTRA_NEWS_TITLE)
             val keyWords = intent.getStringArrayListExtra(EXTRA_NEWS_KEYWORDS)
@@ -38,6 +43,9 @@ class WebViewActivity : AppCompatActivity() {
     }
 
     private fun setupEvents() {
+        /**
+         * 웹 뷰 셋팅
+         */
         mViewModel.webViewSetting(mbind.webView, intent.getStringExtra(EXTRA_NEWS_LINK)!!)
 
     }

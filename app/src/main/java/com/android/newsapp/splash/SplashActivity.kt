@@ -14,6 +14,9 @@ import common.lib.Activities
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * 스플래쉬 액티비티
+ */
 class SplashActivity : AppCompatActivity() {
     companion object {
         fun createIntent(context: Context): Intent {
@@ -38,6 +41,9 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setupEvents() {
+        /**
+         * 이미지 원형으로 마스킹
+         */
         mBind.imgSplashMain.background = ShapeDrawable(OvalShape())
         mBind.imgSplashMain.clipToOutline = true
     }

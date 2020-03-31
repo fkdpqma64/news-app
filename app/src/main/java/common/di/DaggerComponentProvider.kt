@@ -2,7 +2,6 @@ package common.di
 
 
 import android.app.Activity
-import androidx.fragment.app.Fragment
 
 interface DaggerComponentProvider {
     val component: AppComponent

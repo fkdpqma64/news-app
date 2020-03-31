@@ -7,12 +7,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
+/**
+ * 커스텀 ViewModel - LifeCycle 사용
+ */
 open class CustomViewModel : ViewModel(), Observable {
     private val mDataLoading = MutableLiveData<Boolean>()
     val dataLoading: LiveData<Boolean> = mDataLoading
 
-    fun startDataLoading() = mDataLoading.postValue(true)
-    fun stopDataLoading() = mDataLoading.postValue(false)
+    private fun startDataLoading() = mDataLoading.postValue(true)
+    private fun stopDataLoading() = mDataLoading.postValue(false)
     fun isDataLoading() = mDataLoading.value == true
 
     suspend fun <T> runDataLoading(block: suspend () -> T) {

@@ -20,6 +20,9 @@ import common.data.local.Item
 import common.di.injector
 import kotlinx.coroutines.launch
 
+/**
+ * 뉴스 리스트 프래그먼트
+ */
 class NewsListFragment : Fragment() {
 
     companion object {
@@ -32,7 +35,7 @@ class NewsListFragment : Fragment() {
 
     private lateinit var mBind: FragmentNewsListBinding
     private lateinit var mAdapter: NewsListAdapter
-    private val mViewModel by lazy { requireActivity().injector.newsListViewModel}
+    private val mViewModel by lazy { requireActivity().injector.newsListViewModel }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,6 +60,9 @@ class NewsListFragment : Fragment() {
 
     private fun setupEvents() {
 
+        /**
+         * 뷰모델에서 가져온 데이터를 Observe하여 RecyclerView에 등록
+         */
         mViewModel.viewData.observe(viewLifecycleOwner, Observer {
             if (it == null) {
                 mBind.progressBar.visibility = View.VISIBLE
@@ -69,11 +75,16 @@ class NewsListFragment : Fragment() {
             }
         })
 
-
+        /**
+         * 새로고침 리스너
+         */
         mBind.swipeLayout.setOnRefreshListener {
             mViewModel.refreshViewData()
         }
 
+        /**
+         * 데이터 로딩 상태 Observe하여 스와이프 레이어 관리
+         */
         mViewModel.dataLoading.observe(viewLifecycleOwner, Observer { yes ->
             if (!yes) {
                 mBind.swipeLayout.isRefreshing = false
@@ -82,6 +93,9 @@ class NewsListFragment : Fragment() {
 
     }
 
+    /**
+     * RecyclerView 셋업
+     */
     private fun setupRecyclerView() {
         mBind.newsList.apply {
             layoutManager = LinearLayoutManager(thisActivity())
@@ -94,7 +108,10 @@ class NewsListFragment : Fragment() {
         }
         mAdapter = NewsListAdapter()
 
-        mAdapter.clickListener = {item ->
+        /**
+         * 클릭 리스너 - 클릭시 해당 뉴스가 담긴 웹뷰 액티비티로 전환
+         */
+        mAdapter.clickListener = { item ->
             Toast.makeText(thisActivity(), item.title, Toast.LENGTH_SHORT).show()
             val intent = Intent(thisActivity(), WebViewActivity::class.java).also {
                 it.putExtra(EXTRA_NEWS_TITLE, item.title)
@@ -105,6 +122,7 @@ class NewsListFragment : Fragment() {
         }
 
     }
+
     private fun thisActivity(): LaunchActivity? {
         return activity as? LaunchActivity
     }

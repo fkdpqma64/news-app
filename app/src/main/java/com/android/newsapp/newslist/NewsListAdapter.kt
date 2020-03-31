@@ -9,6 +9,9 @@ import common.data.local.Item
 import common.di.module.GlideApp
 import common.lib.parse.keyWordsList
 
+/**
+ * 뉴스 리스트 어뎁터
+ */
 class NewsListAdapter :
     RecyclerView.Adapter<NewsListAdapter.ItemViewHolder>() {
     class ItemViewHolder(val mbind: NewsListItemBinding) : RecyclerView.ViewHolder(mbind.root)
@@ -17,8 +20,9 @@ class NewsListAdapter :
     lateinit var clickListener: (item: Item) -> Unit
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.news_list_item, parent, false)
-        val viewHolder = ItemViewHolder( NewsListItemBinding.bind(view))
+        val view =
+            LayoutInflater.from(parent.context).inflate(R.layout.news_list_item, parent, false)
+        val viewHolder = ItemViewHolder(NewsListItemBinding.bind(view))
         view.setOnClickListener {
             clickListener.invoke(items[viewHolder.adapterPosition])
         }
@@ -31,7 +35,8 @@ class NewsListAdapter :
         items[position].let {
             with(holder.mbind) {
                 txtNewsTitle.text = it.title
-                val desc = if( it.newsData?.article != null && it.newsData!!.article?.trim() != "") it.newsData!!.article else it.newsData?.description
+                val desc =
+                    if (it.newsData?.article != null && it.newsData!!.article?.trim() != "") it.newsData!!.article else it.newsData?.description
                 txtNewsText.text = desc
                 when {
                     desc != null && desc.trim() != "" -> {

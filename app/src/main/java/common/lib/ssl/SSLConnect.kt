@@ -9,7 +9,7 @@ import java.security.cert.X509Certificate
 import javax.net.ssl.*
 
 class SSLConnect {
-    val DO_NOT_VERIFY = HostnameVerifier { hostname, session -> true }
+    private val DO_NOT_VERIFY = HostnameVerifier { hostname, session -> true }
 
     /**
      * Trust every server - don't check for any certificate

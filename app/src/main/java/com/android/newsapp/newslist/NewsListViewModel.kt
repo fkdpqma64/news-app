@@ -26,6 +26,9 @@ class NewsListViewModel @Inject constructor(
 
     }
 
+    /**
+     * 멀티 스레드 코루틴 사용으로 뉴스리스트 파싱
+     */
     fun refreshViewData() {
 
         if (isDataLoading()) {
@@ -38,12 +41,16 @@ class NewsListViewModel @Inject constructor(
                 val itemList = api.call()!!
                 Log.d("XXX", "success RSS Parsing")
 
+                // rss item 리스트에 있는 링크들를 곧바로 html 파싱해야하기 때문에 느려짐 발생
+                // TODO : 최대한 빠르게 처리할 수 있도록 백그라운드 관리
                 itemList.forEach { item ->
                     job.add(launch(Dispatchers.IO) {
                         item.newsData = htmlTagSearch(item.link!!)
                         Log.d("XXX", "parsing ${item.newsData?.title}")
                     })
                 }
+
+                // job 리스트로 먼저 멀티 코루틴을 생성한 후 몰아서 처리
                 job.forEach {
                     it.join()
                 }

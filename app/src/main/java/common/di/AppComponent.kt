@@ -11,6 +11,9 @@ import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
 
+/**
+ *  Dagger - component
+ */
 @Singleton
 @Component(
     modules = [

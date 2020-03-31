@@ -41,6 +41,7 @@ fun htmlTagSearch(url: String): NewsData {
             }
         }
 
+        // 본문 추가 - 뉴스 본문에서 가장 많이 사용하는 태그 대표로 가져옴
         article.forEach {
             val tag: Element = it
             when (tag.attr("itemprop")) {

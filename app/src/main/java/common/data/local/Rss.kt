@@ -4,6 +4,9 @@ import org.simpleframework.xml.Element
 import org.simpleframework.xml.ElementList
 import org.simpleframework.xml.Root
 
+/**
+ * Rss VO
+ */
 @Root(name = "rss", strict = false)
 class Rss {
     @set:Element(name = "channel")
@@ -11,15 +14,16 @@ class Rss {
     var channel: Channel? = null
 
 }
+
 @Root(name = "channel", strict = false)
-class Channel{
+class Channel {
     @set:ElementList(entry = "item", inline = true)
     @get:ElementList(entry = "item", inline = true)
     var items: List<Item>? = null
 }
 
 @Root(name = "item", strict = false)
-class Item{
+class Item {
     @set:Element(name = "title")
     @get:Element(name = "title")
     var title: String? = null

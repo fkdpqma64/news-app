@@ -1,5 +1,8 @@
 package common.data.local
 
+/**
+ * 뉴스 데이터 VO
+ */
 data class NewsData(
     var title: String = "",
     var url: String = "",
