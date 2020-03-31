@@ -36,7 +36,7 @@ class NewsListAdapter :
                 when {
                     desc != null && desc.trim() != "" -> {
                         val keyword = keyWordsList(desc)
-                        it.keyWords?.addAll(keyword)
+                        it.keyWords.addAll(keyword)
                         txtKeyword1.text = keyword[0]
                         txtKeyword2.text = keyword[1]
                         txtKeyword3.text = keyword[2]
