@@ -2,6 +2,8 @@ package common.di
 
 import android.app.Application
 import android.content.Context
+import com.android.newsapp.LaunchActivityViewModel
+import com.android.newsapp.webview.WebViewActivityViewModel
 import common.App
 import common.di.module.RetrofitModule
 import dagger.BindsInstance
@@ -23,8 +25,7 @@ interface AppComponent {
 
     val app: App
 
-//    val launchActivityViewModel: LaunchActivityViewModel
-//    val splashActivityViewModel: SplashActivityViewModel
-//    val webViewActivityViewModel: WebViewActivityViewModel
+    val launchActivityViewModel: LaunchActivityViewModel
+    val webViewActivityViewModel: WebViewActivityViewModel
 
 }
