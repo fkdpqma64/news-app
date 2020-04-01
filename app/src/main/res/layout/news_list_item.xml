@@ -54,6 +54,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="12sp"
                     android:textColor="#fff"
+                    android:visibility="gone"
                     tools:text="1234"/>
 
                 <TextView
@@ -64,6 +65,7 @@
                     android:textSize="12sp"
                     android:textColor="#fff"
                     android:layout_marginStart="8dp"
+                    android:visibility="gone"
                     tools:text="1234"/>
 
                 <TextView
@@ -74,6 +76,7 @@
                     android:textSize="12sp"
                     android:textColor="#fff"
                     android:layout_marginStart="8dp"
+                    android:visibility="gone"
                     tools:text="1234"/>
 
             </LinearLayout>

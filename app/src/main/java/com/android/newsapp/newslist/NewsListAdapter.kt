@@ -1,6 +1,7 @@
 package com.android.newsapp.newslist
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.android.newsapp.R
@@ -42,14 +43,29 @@ class NewsListAdapter :
                     desc != null && desc.trim() != "" -> {
                         val keyword = keyWordsList(desc)
                         it.keyWords.addAll(keyword)
-                        txtKeyword1.text = keyword[0]
-                        txtKeyword2.text = keyword[1]
-                        txtKeyword3.text = keyword[2]
+                        (keyword.indices).forEach {
+                            when (it) {
+                                0 -> {
+                                    txtKeyword1.visibility = View.VISIBLE
+                                    txtKeyword2.visibility = View.GONE
+                                    txtKeyword3.visibility = View.GONE
+                                    txtKeyword1.text = keyword[it]
+                                }
+                                1 -> {
+                                    txtKeyword2.visibility = View.VISIBLE
+                                    txtKeyword2.text = keyword[it]
+                                }
+                                2 -> {
+                                    txtKeyword3.visibility = View.VISIBLE
+                                    txtKeyword3.text = keyword[it]
+                                }
+                            }
+                        }
                     }
                     else -> {
-                        txtKeyword1.text = ""
-                        txtKeyword2.text = ""
-                        txtKeyword3.text = ""
+                        txtKeyword1.visibility = View.GONE
+                        txtKeyword2.visibility = View.GONE
+                        txtKeyword3.visibility = View.GONE
                     }
                 }
                 GlideApp.with(holder.itemView).load(it.newsData?.thumb).into(imgNews)
